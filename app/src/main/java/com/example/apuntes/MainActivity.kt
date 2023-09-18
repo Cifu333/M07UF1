@@ -14,11 +14,20 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.apuntes.ui.theme.ApuntesTheme
 
 class MainActivity : ComponentActivity() {
+
+    enum class Colors(val text:String, val number:Int, val color:Color){
+
+        Red("Rojo", 0, Color.Red),
+        Brown("Marron", 1, Color.Brown),
+        Yellow("Amarillo", 2, Color.Yellow);
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -28,28 +37,7 @@ class MainActivity : ComponentActivity() {
 
                     Column() {
 
-                        for (i in 1..5) {
-
-                        PrintOnScreen("Hola")
                     }
-                    }
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    val name = listOf("Pepe", "juan", "Maria")
-
-                    for (name in names) {
-                        PrintOnScreen(name =)
-                    }
-                    for (i in names.indices) {
-                        PrintOnScreen("index" + 1, i.toString())
-                    }
-
-                    names.forEach { name ->
-                    PrintOnScreen(name)
-                }
-                    names.forEachIndexed{ index, name ->}
-                    PrintOnScreen(name + " " + index.toString())
-
                 }
             }
         }
@@ -58,12 +46,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 
-fun PrintOnScreen(name: String?,name2: String?, modifier: Modifier = Modifier) {
+fun PrintOnScreen(name: String, color:MainActivity.Colors, modifier: Modifier = Modifier) {
 
 
         Text(
-            text = "Hello ${name.uppercase()} ${name2.uppercase()}",
-            modifier = modifier
+            text = "Hello ${name.uppercase()}",
+            color= color.WithAlpha(0.1f)
+
+            }
 
         )
 
