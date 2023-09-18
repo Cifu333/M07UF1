@@ -28,6 +28,8 @@ class MainActivity : ComponentActivity() {
         Yellow("Amarillo", 2, Color.Yellow);
     }
 
+    enum class Operation
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
