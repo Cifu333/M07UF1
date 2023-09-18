@@ -1,8 +1,11 @@
 package com.example.apuntes
 
 import android.os.Bundle
+import android.util.Log
+import android.util.Printer
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -19,8 +22,14 @@ class MainActivity : ComponentActivity() {
             ApuntesTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
-                    Greeting("Android")
+
+                    Column() {
+
+                        for (i in 1)
+
+                        PrintOnScreen("Hola")
+                    }
+
                 }
             }
         }
@@ -28,17 +37,25 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-            text = "Hello $name!",
+
+fun Greeting(name: String?,name2: String?, modifier: Modifier = Modifier) {
+
+    val name = name ?: run {
+        Log.e("Null", "Name is null")
+        return
+    }
+    val name2 = name2 ?: run {
+        Log.e("Null", "Name is null")
+        return
+    }
+
+        Text(
+            text = "Hello ${name.uppercase()} ${name2.uppercase()}",
             modifier = modifier
-    )
+
+        )
+
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ApuntesTheme {
-        Greeting("Android")
-    }
-}
+
+
