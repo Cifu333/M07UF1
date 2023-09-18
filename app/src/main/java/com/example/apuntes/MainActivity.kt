@@ -6,13 +6,16 @@ import android.util.Printer
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.apuntes.ui.theme.ApuntesTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,10 +28,27 @@ class MainActivity : ComponentActivity() {
 
                     Column() {
 
-                        for (i in 1)
+                        for (i in 1..5) {
 
                         PrintOnScreen("Hola")
                     }
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    val name = listOf("Pepe", "juan", "Maria")
+
+                    for (name in names) {
+                        PrintOnScreen(name =)
+                    }
+                    for (i in names.indices) {
+                        PrintOnScreen("index" + 1, i.toString())
+                    }
+
+                    names.forEach { name ->
+                    PrintOnScreen(name)
+                }
+                    names.forEachIndexed{ index, name ->}
+                    PrintOnScreen(name + " " + index.toString())
 
                 }
             }
@@ -38,16 +58,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 
-fun Greeting(name: String?,name2: String?, modifier: Modifier = Modifier) {
+fun PrintOnScreen(name: String?,name2: String?, modifier: Modifier = Modifier) {
 
-    val name = name ?: run {
-        Log.e("Null", "Name is null")
-        return
-    }
-    val name2 = name2 ?: run {
-        Log.e("Null", "Name is null")
-        return
-    }
 
         Text(
             text = "Hello ${name.uppercase()} ${name2.uppercase()}",
